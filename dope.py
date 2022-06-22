@@ -18,7 +18,17 @@ txt_fio = ''
 txt_tyo = 'Полных лет'
 txt_yo = ''
 txt_instr1 = 'Лягте на спину'
-txt_but1 = 'Начать первый текст'
+txt_but1 = 'Начать первый тест'
+txt_hearth1 = ''
+txt_instr2 = 'Выполните 30'
+txt_but2 = 'Начать делать приседания'
+txt_instr3 = 'Лягте на спину'
+txt_but3 = 'Начать финальный тест'
+txt_hearth11 = ''
+txt_hearth12 = ''
+txt_final_but = 'Отправить результаты'
+txt_timer = ''
+
 
 #self.edit = QLineEdit()  
 #self.edit.setPlaceholderText("Type something here and press the 'Print' button") серая надпись на лайн эдите
