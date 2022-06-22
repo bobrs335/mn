@@ -2,6 +2,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from dope import *
 from SECHAND import *
+from tri import *
+from PyQt5.QtGui import *
+
 
 class MainWin(QWidget):
     def __init__(self):
