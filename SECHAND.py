@@ -51,6 +51,8 @@ class TestWin(QWidget):
     def connects(self):
         self.final_but.clicked.connect(self.next_click)
         self.but1.clicked.connect(self.timer1_save)
+        self.but2.clicked.connect(self.timer2_save)
+
 
     def next_click(self):
         self.ew = EndWin()
@@ -62,6 +64,22 @@ class TestWin(QWidget):
         self.timer.timeout.connect(self.timer1Event)
         self.timer.start(1000)
     def timer1Event(self):
+        global time
+        time = time.addSecs(-1)
+        self.timer_lab.setText(time.toString('hh:mm:ss'))
+        self.timer_lab.setFont(QFont('Times',36,QFont.Bold))
+        self.timer_lab.setStyleSheet('color: rgb(0,0,244)')
+        if time.toString('hh:mm:ss') <= '00:00:00':
+            self.timer.stop()
+    
+    def timer2_save(self):
+        global time
+        time = QTime(0,0,30)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.timer2Event)
+        self.timer.start(1000)
+
+    def timer2Event(self):
         global time
         time = time.addSecs(-1)
         self.timer_lab.setText(time.toString('hh:mm:ss'))
