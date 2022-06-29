@@ -5,7 +5,6 @@ from SECHAND import *
 from tri import *
 from PyQt5.QtGui import *
 
-
 class MainWin(QWidget):
     def __init__(self):
         super().__init__()

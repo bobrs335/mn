@@ -3,7 +3,13 @@ from PyQt5.QtWidgets import *
 from dope import *
 from tri import *
 from PyQt5.QtGui import *
-
+class Xpshka():
+    def __init__(self,fio ,yo,t1,t2,t3):
+        self.fio = fio
+        self.yo = int(yo)
+        self.t1 = t1
+        self.t2 = t2
+        self.t3 = t3
 class TestWin(QWidget):
     def __init__(self):
         super().__init__()
@@ -11,6 +17,7 @@ class TestWin(QWidget):
         self.initUI()
         self.connects()
         self.show()
+        self.state = 0
     def set_appear(self):
         self.setWindowTitle(title_text)
         self.resize(win_w,win_h)
@@ -42,6 +49,7 @@ class TestWin(QWidget):
         self.gay.addWidget(self.instr2,alignment = Qt.AlignLeft)
         self.gay.addWidget(self.but2,alignment = Qt.AlignLeft)
         self.gay.addWidget(self.timer_lab,alignment = Qt.AlignRight)
+        self.timer_lab.setFont(QFont('Times',36,QFont.Bold))
         self.gay.addWidget(self.instr3,alignment = Qt.AlignLeft)
         self.gay.addWidget(self.but3,alignment = Qt.AlignLeft)
         self.gay.addWidget(self.hearth11,alignment = Qt.AlignLeft)
@@ -50,43 +58,79 @@ class TestWin(QWidget):
         self.setLayout(self.gay)
     def connects(self):
         self.final_but.clicked.connect(self.next_click)
+        
         self.but1.clicked.connect(self.timer1_save)
         self.but2.clicked.connect(self.timer2_save)
+        self.but3.clicked.connect(self.timer3_save)
+
 
 
     def next_click(self):
-        self.ew = EndWin()
+        self.xp = Xpshka(self.fio.text(),self.yo.text(),self.hearth1.text(),self.hearth11.text(),self.hearth12.text())
+        self.ew = EndWin(self.xp)
         self.hide()
+        
     def timer1_save(self):
-        global time
-        time = QTime(0,0,15)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.timer1Event)
-        self.timer.start(1000)
+        if self.state == 0:
+            self.state = 1
+            global time
+            time = QTime(0,0,15)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.timer1Event)
+            self.timer.start(1000)
+        
+
     def timer1Event(self):
         global time
         time = time.addSecs(-1)
         self.timer_lab.setText(time.toString('hh:mm:ss'))
-        self.timer_lab.setFont(QFont('Times',36,QFont.Bold))
+
         self.timer_lab.setStyleSheet('color: rgb(0,0,244)')
         if time.toString('hh:mm:ss') <= '00:00:00':
             self.timer.stop()
+            self.state = 0
     
     def timer2_save(self):
-        global time
-        time = QTime(0,0,30)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.timer2Event)
-        self.timer.start(1000)
+        if self.state == 0:
+            self.state = 1
+            global time
+            time = QTime(0,0,30)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.timer2Event)
+            self.timer.start(1000)
 
     def timer2Event(self):
         global time
         time = time.addSecs(-1)
         self.timer_lab.setText(time.toString('hh:mm:ss'))
-        self.timer_lab.setFont(QFont('Times',36,QFont.Bold))
-        self.timer_lab.setStyleSheet('color: rgb(0,0,244)')
+
+        self.timer_lab.setStyleSheet('color: rgb(0,220,0)')
         if time.toString('hh:mm:ss') <= '00:00:00':
             self.timer.stop()
+            self.state = 0
+    def timer3_save(self):
+        if self.state == 0:
+            self.state = 1
+            global time
+            time = QTime(0,1,0)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.timer3Event)
+            self.timer.start(1000)
+
+    def timer3Event(self):
+        global time
+        time = time.addSecs(-1)
+        self.timer_lab.setText(time.toString('hh:mm:ss'))
+        if int(time.toString('hh:mm:ss')[6:8]) >= 45:
+            self.timer_lab.setStyleSheet('color: rgb(0,255,0)')
+        elif int(time.toString('hh:mm:ss')[6:8]) <= 15:
+            self.timer_lab.setStyleSheet('color: rgb(0,255,0)')
+        else:    
+            self.timer_lab.setStyleSheet('color: rgb(0,0,0)')
+
+        if time.toString('hh:mm:ss') <= '00:00:00':
+            self.timer.stop()
+            self.state = 0
 
 
 

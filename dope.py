@@ -31,7 +31,11 @@ txt_timer = ''
 txt_ind = ''
 txt_work = ''
 txt_supra = 'Завершение работы'
-
-
+txt_res = ''
+txt_res1 = 'Низкий! ИДИ К ВРАЧУ ЛОХ!'
+txt_res2 = 'Удовлетворительный! Ну такое!'
+txt_res3 = "Средний! Иди гуляй Вася!"
+txt_res4 = 'Выше среднего! Маладец!'
+txt_res5 = 'Высокий! МЕГАХАРОШ!!!'
 #self.edit = QLineEdit()  
 #self.edit.setPlaceholderText("Type something here and press the 'Print' button") серая надпись на лайн эдите
