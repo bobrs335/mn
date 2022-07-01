@@ -39,6 +39,50 @@ class EndWin(QWidget):
                 return txt_res4
             if self.index <= 0.4:
                 return txt_res5
+        if self.data.yo == 13 or self.data.yo == 14:
+            if self.index >= 16.5:
+                return txt_res1
+            if self.index >= 12.5 and self.index <= 16.4:
+                return txt_res2
+            if self.index >= 7.5 and self.index <= 12.4:
+                return txt_res3
+            if self.index >= 2 and self.index <=7.4:
+                return txt_res4
+            if self.index <= 1.9:
+                return txt_res5
+        if self.data.yo == 11 or self.data.yo == 12:
+            if self.index >= 18:
+                return txt_res1
+            if self.index >= 14 and self.index <= 17.9:
+                return txt_res2
+            if self.index >= 9 and self.index <= 13.9:
+                return txt_res3
+            if self.index >= 3.5 and self.index <= 8.9:
+                return txt_res4
+            if self.index <= 3.4:
+                return txt_res5
+        if self.data.yo == 9 or self.data.yo == 10:
+            if self.index >= 19.5:
+                return txt_res1
+            if self.index >= 15.5 and self.index <= 19.4:
+                return txt_res2
+            if self.index >= 10.5 and self.index <= 15.4:
+                return txt_res3
+            if self.index >= 5 and self.index <= 10.4:
+                return txt_res4
+            if self.index <= 4.9:
+                return txt_res5
+        if self.data.yo == 7 or self.data.yo == 8:
+            if self.index >= 21:
+                return txt_res1
+            if self.index >= 17 and self.index <= 20.9:
+                return txt_res2
+            if self.index >= 12 and self.index <= 16.9:
+                return txt_res3
+            if self.index >= 6.5 and self.index <= 11.9:
+                return txt_res4
+            if self.index <= 6.4:
+                return txt_res5
         
 
 
